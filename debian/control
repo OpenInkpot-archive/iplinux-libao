@@ -1,0 +1,34 @@
+Source: libao
+Section: libs
+Priority: optional
+Maintainer: Debian Xiph.org Maintainers <pkg-xiph-maint@lists.alioth.debian.org>
+Uploaders: Adeodato Simó <dato@net.com.org.es>
+Build-Depends: autotools-dev, debhelper, quilt, libartsc0-dev, libasound2-dev [!kfreebsd-i386 !hurd-i386 !kfreebsd-amd64], libaudio-dev, libesd0-dev, libpulse-dev, libxt-dev, libxau-dev
+Standards-Version: 3.8.0
+Vcs-Bzr: http://bzr.debian.org/bzr/pkg-xiph/libao
+
+Package: libao2
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}
+Suggests: libartsc0, libasound2, libaudio2, libesd0 | libesd-alsa0, libpulse0
+Replaces: libao-pulse
+Description: Cross Platform Audio Output Library
+ Libao is a cross platform audio output library.  It supports
+ ALSA, aRts, ESD, OSS, Pulse, and several others.
+
+Package: libao-dev
+Architecture: any
+Section: libdevel
+Depends: libao2 (= ${binary:Version}), libc6-dev
+Description: Cross Platform Audio Output Library Development
+ The libao-dev package contains the header files and documentation
+ needed to develop applications with libao.
+
+Package: libao-dbg
+Architecture: any
+Section: libdevel
+Priority: extra
+Depends: libao2 (= ${binary:Version})
+Description: Cross Platform Audio Output Library Debug Symbols
+ The libao-dev package contains the debug symbols for libao.

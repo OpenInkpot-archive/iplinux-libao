@@ -1,0 +1,46 @@
+diff -urN libao-0.8.8/src/plugins/arts/ao_arts.c libao-0.8.8+patched/src/plugins/arts/ao_arts.c
+--- libao-0.8.8/src/plugins/arts/ao_arts.c	2007-05-24 04:19:07.000000000 -0500
++++ libao-0.8.8+patched/src/plugins/arts/ao_arts.c	2008-02-07 21:55:50.000000000 -0600
+@@ -57,17 +57,9 @@
+ 
+ int ao_plugin_test()
+ {
+-	if (arts_init() == 0) {
+-#ifdef HAVE_ARTS_SUSPENDED
+-		if (arts_suspended() == 1) {
+-			arts_free();
+-			return 0;
+-		}
+-#endif
+-		arts_free();
+-		return 1;
+-	} else
+-		return 0;
++	/* blindly assume that this plugin is ok to use;
++	   arts_init() is volatile (Debian #464638) */
++	return 1;
+ }
+ 
+ 
+@@ -76,10 +68,20 @@
+ 	return &ao_arts_info;
+ }
+ 
+-
+ int ao_plugin_device_init(ao_device *device)
+ {
+ 	ao_arts_internal *internal;
++	static int arts_initted = 0;
++
++	if (!arts_initted && arts_init() == 0) {
++#ifdef HAVE_ARTS_SUSPENDED
++		if (arts_suspended() == 1) {
++			arts_free();
++			return 0;
++		}
++#endif
++		arts_initted++;
++	}
+ 
+ 	internal = (ao_arts_internal *) malloc(sizeof(ao_arts_internal));
+ 
