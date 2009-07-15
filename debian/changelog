@@ -1,3 +1,9 @@
+libao (0.8.8-5.1) asimov; urgency=low
+
+  * IPlinux port
+
+ -- Yauhen Kharuzhy <jekhor@gmail.com>  Wed, 15 Jul 2009 16:40:12 +0300
+
 libao (0.8.8-5) unstable; urgency=low
 
   * Bump to Standards-Version 3.8.0.
