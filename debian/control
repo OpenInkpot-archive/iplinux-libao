@@ -1,9 +1,10 @@
 Source: libao
-Section: libs
+Section: core
 Priority: optional
-Maintainer: Debian Xiph.org Maintainers <pkg-xiph-maint@lists.alioth.debian.org>
-Uploaders: Adeodato Simó <dato@net.com.org.es>
-Build-Depends: autotools-dev, debhelper, quilt, libartsc0-dev, libasound2-dev [!kfreebsd-i386 !hurd-i386 !kfreebsd-amd64], libaudio-dev, libesd0-dev, libpulse-dev, libxt-dev, libxau-dev
+Maintainer: Yauhen Kharuzhy <jekhor@gmail.com>
+Build-Depends: autotools-dev, debhelper, quilt, libasound2-dev [!kfreebsd-i386 !hurd-i386 !kfreebsd-amd64]
+XCS-Cross-Build-Depends: libasound2-dev [!kfreebsd-i386 !hurd-i386 !kfreebsd-amd64]
+XCS-Cross-Host-Build-Depends: autotools-dev, debhelper, quilt
 Standards-Version: 3.8.0
 Vcs-Bzr: http://bzr.debian.org/bzr/pkg-xiph/libao
 
@@ -11,7 +12,7 @@ Package: libao2
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}
-Suggests: libartsc0, libasound2, libaudio2, libesd0 | libesd-alsa0, libpulse0
+Suggests: libasound2
 Replaces: libao-pulse
 Description: Cross Platform Audio Output Library
  Libao is a cross platform audio output library.  It supports
