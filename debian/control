@@ -10,7 +10,7 @@ Vcs-Bzr: http://bzr.debian.org/bzr/pkg-xiph/libao
 
 Package: libao2
 Architecture: any
-Section: libs
+Section: core
 Depends: ${shlibs:Depends}
 Suggests: libasound2
 Replaces: libao-pulse
